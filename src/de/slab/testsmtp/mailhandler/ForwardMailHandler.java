@@ -56,7 +56,7 @@ public class ForwardMailHandler implements MailHandler {
 
   private MimeBodyPart createEmailBody() throws MessagingException {
     MimeBodyPart messageBodyPart = new MimeBodyPart();
-    messageBodyPart.setText("Hi!\n\nI just wanted to let you know that I have received am email and I am configured to tell you about it. See the email I received in the attachment.\n\n    --sLAB development mail forwarder");
+    messageBodyPart.setText("Hi!\n\nI just wanted to let you know that I have received an email and I am configured to tell you about it. See the email I received in the attachment.\n\n    --development mail forwarder");
     return messageBodyPart;
   }
 
