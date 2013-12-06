@@ -1,11 +1,13 @@
 package de.slab.testsmtp.www;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory;
 import de.slab.testsmtp.DevelopmentSMTP;
 import de.slab.testsmtp.mailhandler.MailHandler;
 
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import java.io.OutputStream;
 
 public class ConfigurationPageBuilder implements Runnable {
@@ -13,7 +15,11 @@ public class ConfigurationPageBuilder implements Runnable {
   private final DevelopmentSMTP developmentSMTP;
 
   public ConfigurationPageBuilder(OutputStream out, DevelopmentSMTP developmentSMTP) {
-    this.out = XMLStreamWriterFactory.create(out);
+    try {
+		this.out = XMLOutputFactory.newInstance().createXMLStreamWriter(out);
+	} catch (XMLStreamException | FactoryConfigurationError e) {
+		throw new Error(e);
+	}
     this.developmentSMTP = developmentSMTP;
   }
 

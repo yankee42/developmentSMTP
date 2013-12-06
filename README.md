@@ -53,6 +53,10 @@ developmentSMTP ships with a small web server based on [NanoHTTPD](http://elonen
 to reconfigure the server during runtime using a minimal http interface. Just supply the `--http-port` option to enable
 this service.
 
+Building
+--------
+Execute `mvn package` if you want to build to a "normal" jar file. Execute `mvn compile assembly:single` if you want to build to a jar file which includes all dependencies.
+
 A word of warning
 -----------------
 
